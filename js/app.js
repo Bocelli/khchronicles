@@ -108,52 +108,91 @@ document.addEventListener("DOMContentLoaded", () => {
     const mobilePancakeBtn = document.getElementById("mobile-pancake-btn");
     const dockBackdrop = document.getElementById("dock-backdrop");
 
+    function isMenuOpen() {
+      if (!dockNav) return false;
+      return dockNav.classList.contains("expanded") || dockNav.classList.contains("mobile-open");
+    }
+
+    function closeMenu() {
+      if (dockNav) {
+        dockNav.classList.remove("mobile-open", "expanded");
+      }
+      if (dockPancakeIcon) {
+        dockPancakeIcon.className = "fa-solid fa-bars text-xs";
+      }
+      if (dockBackdrop) {
+        dockBackdrop.classList.add("hidden");
+      }
+    }
+
+    function openMenu() {
+      if (!dockNav) return;
+      const isMobile = window.innerWidth < 768;
+      if (isMobile) {
+        dockNav.classList.add("mobile-open");
+      } else {
+        dockNav.classList.add("expanded");
+      }
+      if (dockPancakeIcon) {
+        dockPancakeIcon.className = "fa-solid fa-xmark text-xs";
+      }
+      if (dockBackdrop) {
+        dockBackdrop.classList.remove("hidden");
+      }
+    }
+
+    function toggleMenu() {
+      if (isMenuOpen()) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    // Toggle Espansione / Chiusura Dock da Pulsante Interno (il Tasto X / Bars)
+    if (dockToggleBtn) {
+      dockToggleBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+        window.khAudio.playUiSound("click");
+      });
+    }
+
+    // Toggle Mobile Drawer dal pulsante pancake in alto a sinistra
+    if (mobilePancakeBtn) {
+      mobilePancakeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleMenu();
+        window.khAudio.playUiSound("click");
+      });
+    }
+
+    // Click sul Backdrop per chiudere il menu
+    if (dockBackdrop) {
+      dockBackdrop.addEventListener("click", (e) => {
+        e.preventDefault();
+        closeMenu();
+      });
+    }
+
+    // Tasto ESC per chiudere il menu da tastiera
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isMenuOpen()) {
+        closeMenu();
+      }
+    });
+
     // Click sul Logo Header: torna alla Home pulita senza bordi o sfondi attivi
     if (headerLogoBtn) {
       headerLogoBtn.addEventListener("click", (e) => {
         e.preventDefault();
         state.currentTab = "home";
-        if (dockNav) {
-          dockNav.classList.remove("mobile-open");
-          dockNav.classList.remove("expanded");
-          if (dockPancakeIcon) dockPancakeIcon.className = "fa-solid fa-bars text-xs";
-        }
-        if (dockBackdrop) dockBackdrop.classList.add("hidden");
+        closeMenu();
         window.khAudio.playUiSound("click");
         renderCurrentTab();
         window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    }
-
-    // Toggle Espansione Dock Sinistro Desktop
-    if (dockToggleBtn && dockNav) {
-      dockToggleBtn.addEventListener("click", () => {
-        dockNav.classList.toggle("expanded");
-        const isExp = dockNav.classList.contains("expanded");
-        if (dockPancakeIcon) {
-          dockPancakeIcon.className = isExp ? "fa-solid fa-xmark text-xs" : "fa-solid fa-bars text-xs";
-        }
-        if (dockBackdrop) {
-          if (isExp) dockBackdrop.classList.remove("hidden");
-          else if (!dockNav.classList.contains("mobile-open")) dockBackdrop.classList.add("hidden");
-        }
-        window.khAudio.playUiSound("click");
-      });
-    }
-
-    // Toggle Mobile Drawer da Sinistra
-    if (mobilePancakeBtn && dockNav && dockBackdrop) {
-      mobilePancakeBtn.addEventListener("click", () => {
-        dockNav.classList.add("mobile-open");
-        dockBackdrop.classList.remove("hidden");
-        window.khAudio.playUiSound("click");
-      });
-
-      dockBackdrop.addEventListener("click", () => {
-        dockNav.classList.remove("mobile-open");
-        dockNav.classList.remove("expanded");
-        if (dockPancakeIcon) dockPancakeIcon.className = "fa-solid fa-bars text-xs";
-        dockBackdrop.classList.add("hidden");
       });
     }
 
@@ -161,15 +200,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", () => {
         const targetTab = btn.getAttribute("data-nav-tab");
         state.currentTab = targetTab;
-        
-        // Chiudi drawer ed espansione se aperti
-        if (dockNav) {
-          dockNav.classList.remove("mobile-open");
-          dockNav.classList.remove("expanded");
-          if (dockPancakeIcon) dockPancakeIcon.className = "fa-solid fa-bars text-xs";
-        }
-        if (dockBackdrop) dockBackdrop.classList.add("hidden");
-
+        closeMenu();
         window.khAudio.playUiSound("click");
         renderCurrentTab();
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -180,6 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mobileSelect) {
       mobileSelect.addEventListener("change", (e) => {
         state.currentTab = e.target.value;
+        closeMenu();
         window.khAudio.playUiSound("click");
         renderCurrentTab();
       });

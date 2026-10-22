@@ -373,10 +373,22 @@ body {
 /* ==========================================================================
    LEFT PANCAKE DOCK NAVIGATION (MENÙ LATERALE ULTRA SLIM SINISTRA)
    ========================================================================== */
+#dock-backdrop {
+  z-index: 55 !important;
+}
+
+#dock-pancake-icon {
+  pointer-events: none;
+}
+
+#dock-toggle-btn {
+  cursor: pointer;
+}
+
 #left-dock-nav, #right-dock-nav {
   transition: width 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease;
   width: 3rem; /* 48px ultra slim */
-  z-index: 60;
+  z-index: 60 !important;
 }
 
 #left-dock-nav.expanded, #right-dock-nav.expanded {
@@ -417,12 +429,16 @@ body {
   margin-right: 0 !important;
 }
 
-#left-dock-nav.expanded .dock-label, #right-dock-nav.expanded .dock-label {
+#left-dock-nav.expanded .dock-label,
+#left-dock-nav.mobile-open .dock-label,
+#right-dock-nav.expanded .dock-label,
+#right-dock-nav.mobile-open .dock-label {
   display: block !important;
   animation: monsterPaneFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-#left-dock-nav:not(.expanded) .dock-label, #right-dock-nav:not(.expanded) .dock-label {
+#left-dock-nav:not(.expanded):not(.mobile-open) .dock-label,
+#right-dock-nav:not(.expanded):not(.mobile-open) .dock-label {
   display: none !important;
 }
 
