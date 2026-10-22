@@ -38,6 +38,11 @@
 }
 
 /* Sfondi ed Effetti Tramonto / Starlight */
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 body {
   background-color: var(--bg-deep);
   color: var(--text-main);
@@ -49,6 +54,8 @@ body {
   background-attachment: fixed;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
 }
 
 /* Tipografia Speciale Cinzel per i Titoli Fantasy */
