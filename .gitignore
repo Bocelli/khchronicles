@@ -1,0 +1,11 @@
+# Dipendenze
+node_modules/
+
+# File di sistema e log
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+
+# Eseguibili temporanei
+*.exe

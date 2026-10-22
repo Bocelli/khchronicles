@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom Hearts Chronicles — Tutta la Storia Cronologica & Guide Complete</title>
+  
+  <!-- Google Fonts: Cinzel, Cinzel Decorative, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            khDark: '#0a0d16',
+            khNavy: '#111728',
+            khWarmCard: '#1a1824',
+            khGold: '#fbbf24',
+            khAmber: '#f59e0b',
+            khSunset: '#f43f5e',
+            khSeaSalt: '#38bdf8'
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            cinzelDeco: ['Cinzel Decorative', 'cursive', 'serif'],
+            sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Cozy Warm Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="min-h-screen text-slate-100 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950 has-left-dock">
+
+  <!-- ==================== FEEDBACK VISIVO CAMBIO PAGINA (TOAST GLOW) ==================== -->
+  <div id="kh-page-toast" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex items-center gap-2.5 px-4 py-2 rounded-full bg-slate-950/95 backdrop-blur-md border border-amber-500/40 text-xs text-amber-200">
+    <i id="kh-page-toast-icon" class="fa-solid fa-crown text-amber-400"></i>
+    <span id="kh-page-toast-text" class="font-cinzel font-semibold tracking-wide">Home Salotto</span>
+  </div>
+
+  <!-- ==================== HEADER AMBIENTALE COMPATTO & ORDINATO ==================== -->
+  <header class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-amber-500/20 transition-all shadow-lg shadow-black/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      
+      <!-- Mobile Pancake Toggle & Logo -->
+      <div class="flex items-center gap-3 shrink-0">
+        <!-- Pulsante Pancake Mobile per aprire il dock da sinistra -->
+        <button 
+          id="mobile-pancake-btn"
+          class="md:hidden w-9 h-9 rounded-lg bg-slate-900 text-amber-400 border border-amber-500/30 flex items-center justify-center hover:bg-amber-500 hover:text-slate-950 transition shadow-md btn-press shrink-0"
+          aria-label="Apri Menu Navigazione"
+          title="Apri Menu"
+        >
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+
+        <!-- Logo & Titolo del Salotto -->
+        <a href="#" data-nav-tab="home" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-amber-600 via-amber-400 to-rose-400 p-[1.5px] shadow-md shadow-amber-500/20 group-hover:scale-105 transition">
+            <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center text-amber-400 text-sm">
+              <i class="fa-solid fa-crown"></i>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-cinzel text-base md:text-lg font-bold tracking-wider text-amber-100 group-hover:text-amber-300 transition leading-none">
+                KH Chronicles
+              </span>
+              <span class="hidden lg:inline-block px-1.5 py-0.5 rounded text-[9px] font-sans font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                14 Ere
+              </span>
+            </div>
+            <span class="hidden sm:block text-[10px] font-sans text-amber-300/70 tracking-wider uppercase mt-0.5 leading-none">
+              Archivio della Luce & dei Ricordi
+            </span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Barra di Ricerca Rapida Compatta -->
+      <div class="flex-1 max-w-xs md:max-w-md mx-2 relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-xs text-slate-400"></i>
+        <input 
+          type="text" 
+          id="global-search-input" 
+          placeholder="Cerca ere, eroi, armi, boss o lore..." 
+          class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition"
+        >
+      </div>
+
+      <!-- Controllo Audio Compatto: Dearly Beloved Loop & Slide Volume -->
+      <div class="flex items-center gap-1.5 sm:gap-2.5 bg-slate-900/95 border border-amber-500/30 rounded-full p-1 pl-1.5 pr-2.5 shadow-md shadow-black/40 shrink-0">
+        <!-- Tasto Play / Pausa -->
+        <button 
+          id="audio-toggle-btn"
+          aria-label="Riproduci Dearly Beloved"
+          class="flex items-center gap-2 px-2.5 py-1 rounded-full bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 transition btn-press group"
+          title="Riproduci / Metti in Pausa Dearly Beloved in Loop"
+        >
+          <div class="w-5 h-5 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-300 group-hover:scale-110 transition shrink-0">
+            <i id="audio-icon" class="fa-solid fa-play text-[10px]"></i>
+          </div>
+          <span class="text-xs font-cinzel font-bold text-amber-100 group-hover:text-amber-300 transition leading-none hidden xs:inline">Dearly Beloved</span>
+          <span id="audio-wave-anim" class="hidden items-end gap-[2px] h-3 ml-0.5">
+            <span class="w-[2px] h-full bg-amber-400 rounded-full animate-wave-1"></span>
+            <span class="w-[2px] h-2/3 bg-amber-400 rounded-full animate-wave-2"></span>
+            <span class="w-[2px] h-4/5 bg-amber-400 rounded-full animate-wave-3"></span>
+          </span>
+        </button>
+
+        <!-- Divisore Sottile -->
+        <span class="w-[1px] h-4 bg-slate-700/80"></span>
+
+        <!-- Slider del Volume con Tasto Muto -->
+        <div class="flex items-center gap-1.5 text-slate-400">
+          <button id="audio-mute-btn" class="text-amber-400 hover:text-amber-300 transition p-0.5 text-xs flex items-center justify-center" title="Muto / Riattiva Volume">
+            <i id="audio-volume-icon" class="fa-solid fa-volume-high text-[11px]"></i>
+          </button>
+          <input 
+            id="audio-volume-slider" 
+            type="range" 
+            min="0" 
+            max="1" 
+            step="0.02" 
+            value="0.5" 
+            class="w-14 sm:w-20 h-1 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-400 hover:accent-amber-300 transition" 
+            aria-label="Regola Volume Dearly Beloved"
+            title="Regola Volume"
+          >
+          <span id="audio-volume-value" class="text-[10px] font-mono text-amber-300/80 w-6 text-right hidden sm:inline">50%</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== SUB-BAR AMBIENTALE COMPATTA ==================== -->
+  <div class="bg-slate-900/60 border-b border-slate-800/80 px-4 sm:px-6 lg:px-8 py-2 text-xs text-slate-400 flex items-center justify-between">
+    <div class="flex items-center gap-2 max-w-7xl mx-auto w-full">
+      <span class="inline-flex items-center gap-1.5 text-amber-400/90 font-cinzel text-[11px]">
+        <i class="fa-solid fa-shield-cat text-amber-400"></i> Salotto di Crepuscopoli
+      </span>
+      <span class="text-slate-600">/</span>
+      <span id="current-section-badge" class="text-slate-200 font-medium text-[11px]">Home Salotto</span>
+      <span class="hidden md:inline-flex items-center gap-1 ml-auto text-[11px] text-amber-300/70">
+        <i class="fa-solid fa-volume-high text-xs text-amber-400"></i> Dearly Beloved (KH2 Extended) in sottofondo
+      </span>
+    </div>
+  </div>
+
+  <!-- ==================== MENU A PANCAKE SULLA SINISTRA (ULTRA SLIM DOCK NAV) ==================== -->
+  <!-- Backdrop scuro per mobile ed espansione -->
+  <div id="dock-backdrop" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+
+  <!-- Dock laterale ultra slim fisso sulla sinistra -->
+  <aside id="left-dock-nav" class="fixed left-0 top-0 h-screen z-50 flex flex-col justify-between bg-slate-950/95 backdrop-blur-2xl border-r border-amber-500/25 shadow-2xl transition-all duration-300 group/dock select-none" aria-label="Navigazione Principale a Sinistra">
+    
+    <!-- Intestazione del Dock con Pulsante Pancake Espandi / Riduci -->
+    <div class="h-12 px-1.5 border-b border-slate-800/80 flex items-center justify-between shrink-0 bg-slate-900/60">
+      <div class="dock-label hidden overflow-hidden whitespace-nowrap pl-2">
+        <span class="font-cinzel text-xs font-bold text-amber-200 tracking-wider uppercase block">Menu Cronache</span>
+        <span class="text-[9px] text-slate-400 font-sans block">Archivio Completo</span>
+      </div>
+      <button id="dock-toggle-btn" class="w-8 h-8 mx-auto rounded-lg bg-slate-900 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center transition shadow btn-press shrink-0" aria-label="Espandi o comprimi menu" title="Espandi / Comprimi Menù">
+        <i id="dock-pancake-icon" class="fa-solid fa-bars text-xs"></i>
+      </button>
+    </div>
+
+    <!-- Lista delle 12 Schede con Icone e Nomi -->
+    <div class="flex-1 py-2 px-1 space-y-1 overflow-y-auto overflow-x-hidden scrollbar-none flex flex-col items-center group-[.expanded]/dock:items-stretch">
+      
+      <!-- 0. Home / Salotto -->
+      <button data-nav-tab="home" class="dock-item active relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Home (Salotto & Portale)">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-house text-amber-400"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Home Salotto</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Portale & Accoglienza</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Home (Salotto)
+        </span>
+      </button>
+
+      <!-- 1. Cronologia -->
+      <button data-nav-tab="timeline" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Cronologia (14 Ere)">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-timeline text-amber-400"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Cronologia</span>
+          <span class="block text-[10px] text-slate-400 font-sans">14 Ere di Storia</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Cronologia (14 Ere)
+        </span>
+      </button>
+
+      <!-- 2. Glossario Personaggi -->
+      <button data-nav-tab="characters" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Glossario Personaggi (44 Eroi & Nemici)">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-users text-amber-300"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Glossario Personaggi</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Suddivisi per Gioco</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Glossario Personaggi
+        </span>
+      </button>
+
+      <!-- 2. Guida ai Giochi -->
+      <button data-nav-tab="games" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Guida ai Giochi">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-gamepad text-indigo-400"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Guida ai Giochi</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Gameplay & Consigli</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Guida ai Giochi
+        </span>
+      </button>
+
+      <!-- 3. Forgia dei Keyblade -->
+      <button data-nav-tab="keyblades" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Forgia dei Keyblade">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-key text-amber-300"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Forgia Keyblade</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Statistiche & Armi</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Forgia dei Keyblade
+        </span>
+      </button>
+
+      <!-- 4. Abilità & Magie -->
+      <button data-nav-tab="skills" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Tomo Abilità & Magie">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-wand-magic-sparkles text-sky-400"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Abilità & Magie</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Sopravvivenza & Crescita</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Abilità & Magie
+        </span>
+      </button>
+
+      <!-- 5. Fusioni & Unioni -->
+      <button data-nav-tab="unions" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Fusioni & Unioni">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-shield-halved text-rose-400"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Fusioni & Unioni</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Drive Forms, BBS & Link</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Fusioni & Unioni
+        </span>
+      </button>
+
+      <!-- 6. Bestiario dei Mondi -->
+      <button data-nav-tab="bestiary" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Bestiario dei Mondi">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-dragon text-emerald-400"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Bestiario Mondi</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Schede Mostri & Drop</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Bestiario dei Mondi
+        </span>
+      </button>
+
+      <!-- 7. Boss Segreti -->
+      <button data-nav-tab="bosses" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Boss Segreti">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-skull text-purple-400"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Boss Segreti</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Strategie & Lingering Will</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Boss Segreti
+        </span>
+      </button>
+
+      <!-- 8. Ordini di Gioco -->
+      <button data-nav-tab="orders" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Ordini di Gioco">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-compass text-amber-300"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Ordini di Gioco</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Release vs Crono</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Ordini di Gioco
+        </span>
+      </button>
+
+      <!-- 9. Epiloghi & Segreti -->
+      <button data-nav-tab="epilogues" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Epiloghi & Segreti">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-film text-orange-400"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Epiloghi & Segreti</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Luxu, Yozora & KH4</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Epiloghi & Segreti
+        </span>
+      </button>
+
+      <!-- 10. Enciclopedia Lore (con Icona dedicata) -->
+      <button data-nav-tab="lore" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Enciclopedia Lore">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-book-journal-whills text-cyan-400"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Enciclopedia Lore</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Grandi Misteri & Regole</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Enciclopedia Lore
+        </span>
+      </button>
+
+      <!-- 11. Salotto & Tracker -->
+      <button data-nav-tab="tracker" class="dock-item relative rounded-lg border border-transparent flex items-center transition-all text-slate-300 hover:text-amber-300 hover:bg-slate-900/80 group/item active:scale-95" title="Salotto & Tracker">
+        <div class="w-5 flex items-center justify-center shrink-0 text-sm">
+          <i class="fa-solid fa-star text-yellow-300"></i>
+        </div>
+        <div class="dock-label hidden whitespace-nowrap text-left truncate leading-tight pl-2.5">
+          <span class="block text-xs font-cinzel font-bold text-amber-100 group-hover/item:text-amber-300 transition">Salotto & Tracker</span>
+          <span class="block text-[10px] text-slate-400 font-sans">Paopu, Quiz & Progressi</span>
+        </div>
+        <span class="dock-tooltip absolute left-full ml-3 px-2.5 py-1 rounded-lg bg-slate-900 border border-amber-500/30 text-amber-200 text-xs font-cinzel whitespace-nowrap shadow-xl opacity-0 pointer-events-none z-50">
+          Salotto & Tracker
+        </span>
+      </button>
+
+    </div>
+
+    <!-- Footer del Dock -->
+    <div class="h-10 px-1 border-t border-slate-800/80 flex items-center justify-center shrink-0 bg-slate-900/40">
+      <i class="fa-solid fa-crown text-amber-500/50 text-xs"></i>
+      <span class="dock-label hidden text-[9px] font-cinzel text-amber-300/70 ml-2">KH Chronicles</span>
+    </div>
+
+  </aside>
+
+  <!-- ==================== CONTENUTO PRINCIPALE A SCHEDE ==================== -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+
+    <!-- ==================== TAB 0: HOME / SALOTTO COZY (DEFAULT LANDING) ==================== -->
+    <section id="tab-home" class="space-y-8 tab-pane-active">
+      
+      <!-- Banner Salotto Accogliente & Compatto -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/95 to-amber-950/40 border border-amber-500/25 p-6 sm:p-8 md:p-10 shadow-2xl">
+        <!-- Glow d'atmosfera Crepuscopoli -->
+        <div class="absolute -top-24 -right-24 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -left-24 w-80 h-80 bg-rose-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-semibold">
+            <i class="fa-solid fa-mug-hot text-amber-400"></i>
+            <span>Salotto di Crepuscopoli • Benvenuto Custode</span>
+          </div>
+
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-cinzel font-extrabold text-amber-50 leading-tight">
+            Kingdom Hearts <span class="sunset-gradient-text">Chronicles</span>
+          </h1>
+
+          <p class="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">
+            L'opera enciclopedica definitiva dedicata alla saga di <strong class="text-amber-200">Tetsuya Nomura</strong>. Qui puoi esplorare l'intera storia raccontata in ordine cronologico, il bestiario completo con immagini e drop rate, la forgia dei Keyblade, le abilità, i superboss e gli epiloghi segreti fino a Quadratum.
+          </p>
+
+          <!-- Quick Action Buttons -->
+          <div class="flex flex-wrap items-center gap-3 pt-2">
+            <button data-jump-tab="orders" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-bold text-xs sm:text-sm shadow-lg shadow-amber-500/25 transition flex items-center gap-2 btn-press">
+              <i class="fa-solid fa-compass"></i> Come Giocare la Saga
+            </button>
+            <button data-jump-tab="characters" class="px-5 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-amber-200 font-semibold text-xs sm:text-sm border border-amber-500/30 transition flex items-center gap-2 btn-press">
+              <i class="fa-solid fa-users"></i> Glossario Personaggi
+            </button>
+            <button data-jump-tab="timeline" class="px-5 py-2.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/50 text-rose-200 font-semibold text-xs sm:text-sm border border-rose-500/30 transition flex items-center gap-2 btn-press">
+              <i class="fa-solid fa-timeline"></i> Cronologia (14 Ere)
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BADGE DI PROTEZIONE SPOILER (SPOILER-SAFE ADVISORY) -->
+      <div class="rounded-2xl bg-gradient-to-r from-amber-950/30 via-slate-900/90 to-rose-950/20 border border-amber-500/35 p-5 md:p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center justify-center text-xl shrink-0 mt-0.5 shadow-md shadow-amber-500/10">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <h3 class="font-cinzel font-bold text-amber-100 text-base">Protezione Spoiler Attiva</h3>
+              <span class="px-2 py-0.5 rounded text-[10px] font-sans font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Safe Landing</span>
+            </div>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+              Questa home page è pensata per accoglierti senza svelare la trama. La scheda <strong class="text-amber-200">Cronologia</strong> racconta la storia integrale (inclusi colpi di scena di Birth by Sleep, 358/2 Days, KH3 Re Mind e Melody of Memory). Se stai affrontando la saga per la prima volta, ti consigliamo di partire dalla <strong class="text-amber-200">Guida ai Giochi</strong> e dagli <strong class="text-amber-200">Ordini di Gioco</strong>!
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2.5 shrink-0 w-full md:w-auto">
+          <button data-jump-tab="orders" class="w-full md:w-auto px-4 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/40 text-amber-300 text-xs font-semibold transition text-center btn-press">
+            <i class="fa-solid fa-compass mr-1.5"></i> Leggi Senza Spoiler
+          </button>
+        </div>
+      </div>
+
+      <!-- SEZIONE PORTALE DELL'ARCHIVIO (12 SCHEDE INTERATTIVE) -->
+      <div class="space-y-4">
+        <div class="border-b border-amber-500/20 pb-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs uppercase font-cinzel font-bold tracking-wider text-amber-400">Hub dell'Archivio</span>
+            <h2 class="text-2xl font-bold font-cinzel text-amber-100 mt-0.5">Esplora le 12 Sezioni delle Cronache</h2>
+          </div>
+          <span class="text-xs text-slate-400 hidden sm:block">Clicca su qualsiasi scheda per aprirla istantaneamente</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <!-- Card 1: Cronologia -->
+          <div data-jump-tab="timeline" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 border border-amber-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-timeline"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-rose-500/15 text-rose-300 border border-rose-500/30">
+                  14 Ere • Con Spoiler
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-amber-300 text-base transition">Cronologia Completa</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Tutta la storia narrata in ordine canonico dall'Era delle Fiabe al principio di Kingdom Hearts IV.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-amber-400 group-hover:text-amber-300 transition gap-1">
+              <span>Apri Cronologia</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 2: Glossario Personaggi -->
+          <div data-jump-tab="characters" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                  44 Personaggi Ufficiali
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-amber-300 text-base transition">Glossario Personaggi</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Schede complete con artwork ufficiali, doppiatori, armi, legami del cuore e curiosità suddivisi per gioco.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-amber-400 group-hover:text-amber-300 transition gap-1">
+              <span>Sfoglia Personaggi</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 3: Guida ai Giochi -->
+          <div data-jump-tab="games" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-indigo-500/15 text-indigo-400 border border-indigo-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-gamepad"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
+                  13 Capitoli • Guide
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-indigo-300 text-base transition">Guida ai Giochi</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Piattaforme di gioco, meccaniche, differenze Final Mix e consigli pratici per ogni capitolo.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-indigo-400 group-hover:text-indigo-300 transition gap-1">
+              <span>Consulta Guida</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 4: Forgia dei Keyblade -->
+          <div data-jump-tab="keyblades" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-key"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                  Statistiche & Sintesi
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-amber-300 text-base transition">Forgia Keyblade</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Tutte le armi leggendarie: statistiche di Attacco e Magia, abilità passive e ricette di sintesi Moguri.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-amber-400 group-hover:text-amber-300 transition gap-1">
+              <span>Esplora Forgia</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 5: Abilità & Magie -->
+          <div data-jump-tab="skills" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-sky-500/15 text-sky-400 border border-sky-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-sky-500/15 text-sky-300 border border-sky-500/30">
+                  Sopravvivenza & Spell
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-sky-300 text-base transition">Abilità & Magie</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Second Chance, Leaf Bracer, Glide, abilità di crescita e formule magiche da Firaga a Curaga.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-sky-400 group-hover:text-sky-300 transition gap-1">
+              <span>Apri Tomo Magie</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 6: Fusioni & Unioni -->
+          <div data-jump-tab="unions" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-rose-500/15 text-rose-400 border border-rose-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-rose-500/15 text-rose-300 border border-rose-500/30">
+                  Drive, BBS & Unioni
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-rose-300 text-base transition">Fusioni & Unioni</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Forme Fusione di KH2 (Valor, Wisdom, Master, Final, Anti), stili Command di BBS e Unioni dei Veggenti.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-rose-400 group-hover:text-rose-300 transition gap-1">
+              <span>Scopri Fusioni</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 7: Bestiario dei Mondi -->
+          <div data-jump-tab="bestiary" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-dragon"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  Schede Mostri & Drop
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-emerald-300 text-base transition">Bestiario dei Mondi</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Heartless, Nessuno, Nesciens e Incubi con immagini, mondo di comparsa, debolezze e percentuali drop.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-emerald-400 group-hover:text-emerald-300 transition gap-1">
+              <span>Consulta Bestiario</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 8: Boss Segreti -->
+          <div data-jump-tab="bosses" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-purple-500/15 text-purple-400 border border-purple-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-skull"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/30">
+                  Superboss & Tattiche
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-purple-300 text-base transition">Boss Segreti</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Strategie dettagliate per battere Lingering Will, Unknown (Xemnas), Sephiroth, Mysterious Figure e Yozora.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-purple-400 group-hover:text-purple-300 transition gap-1">
+              <span>Strategie Superboss</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 9: Ordini di Gioco -->
+          <div data-jump-tab="orders" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-compass"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                  Guida Neofiti & Esperti
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-amber-300 text-base transition">Ordini di Gioco</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Ordine di uscita vs ordine cronologico: spiegazione completa su quale sequenza seguire per non rovinarsi l'esperienza.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-amber-400 group-hover:text-amber-300 transition gap-1">
+              <span>Scegli il Percorso</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 10: Epiloghi & Segreti -->
+          <div data-jump-tab="epilogues" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-orange-500/15 text-orange-400 border border-orange-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-film"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-orange-500/15 text-orange-300 border border-orange-500/30">
+                  Luxu, Yozora & KH4
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-orange-300 text-base transition">Epiloghi & Segreti</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Tutti i finali segreti svelati: la Scatola Nera, l'identità di Luxu e il destino di Sora nel mondo fittizio di Quadratum.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-orange-400 group-hover:text-orange-300 transition gap-1">
+              <span>Vedi Epiloghi</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 11: Enciclopedia Lore -->
+          <div data-jump-tab="lore" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-cyan-500/15 text-cyan-400 border border-cyan-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-book-journal-whills"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
+                  Regole Universali & Cuori
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-cyan-300 text-base transition">Enciclopedia Lore</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                I dogmi dell'universo di Nomura: cosa è veramente Kingdom Hearts, come funzionano i viaggi nel tempo e la memoria.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-cyan-400 group-hover:text-cyan-300 transition gap-1">
+              <span>Consulta la Lore</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+          <!-- Card 12: Salotto & Tracker -->
+          <div data-jump-tab="tracker" class="portal-card rounded-2xl p-5 flex flex-col justify-between group">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="portal-icon-wrapper w-10 h-10 rounded-xl bg-yellow-500/15 text-yellow-300 border border-yellow-500/30 flex items-center justify-center text-lg transition duration-300">
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <span class="px-2 py-0.5 rounded text-[10px] font-sans font-semibold bg-yellow-500/15 text-yellow-300 border border-yellow-500/30">
+                  Interattivo & Paopu
+                </span>
+              </div>
+              <h3 class="font-cinzel font-bold text-amber-100 group-hover:text-yellow-300 text-base transition">Salotto & Tracker</h3>
+              <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+                Generatore di auguri con il Frutto Paopu, quiz personalizzato "Quale gioco iniziare?" e diario di completamento.
+              </p>
+            </div>
+            <div class="pt-4 flex items-center text-xs font-semibold text-yellow-400 group-hover:text-yellow-300 transition gap-1">
+              <span>Entra nel Salotto</span>
+              <i class="fa-solid fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Saggezza del Salotto & Quote Card -->
+      <div class="kh-card rounded-2xl p-6 border border-amber-500/20 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <div class="flex items-center gap-2 text-xs font-cinzel text-amber-400">
+            <i class="fa-solid fa-quote-left"></i>
+            <span>Saggezza dal Tramonto di Crepuscopoli</span>
+          </div>
+          <p id="home-quote-text" class="italic text-slate-200 text-sm sm:text-base leading-relaxed">
+            "Il mio cuore dice che non sei solo. Tu sei dentro di me, e ovunque io vada, tu sarai sempre lì."
+          </p>
+          <span id="home-quote-author" class="block text-xs font-cinzel text-amber-300 font-semibold">— Sora (Kingdom Hearts)</span>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <button id="home-quote-refresh-btn" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-amber-500/30 text-amber-300 text-xs font-cinzel transition flex items-center gap-1.5 btn-press">
+            <i class="fa-solid fa-rotate"></i> Altra Frase
+          </button>
+          <button data-jump-tab="tracker" class="px-4 py-2 rounded-xl bg-rose-950/40 hover:bg-rose-900/50 border border-rose-500/30 text-rose-200 text-xs font-cinzel transition flex items-center gap-1.5 btn-press">
+            <i class="fa-solid fa-star text-amber-300"></i> Desiderio Paopu
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 1: CRONOLOGIA COMPLETA (14 ERE) -->
+    <section id="tab-timeline" class="hidden space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-amber-500/20 pb-6">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-cinzel">Il Filo Rosso del Tempo</span>
+          <h2 class="text-3xl font-bold font-cinzel text-amber-100 mt-1">La Cronaca dei Mondi (Ordine Canonico)</h2>
+          <p class="text-sm text-slate-400 mt-1">
+            La narrazione completa suddivisa in 14 Ere in ordine di avvenimento storico, dagli albori della creazione a Kingdom Hearts IV.
+          </p>
+        </div>
+        <div class="text-xs text-amber-300/80 bg-amber-500/10 px-3 py-2 rounded-lg border border-amber-500/20 shrink-0">
+          <i class="fa-solid fa-info-circle mr-1 text-amber-400"></i> Clicca su ciascun capitolo per leggere la storia completa
+        </div>
+      </div>
+
+      <!-- Contenitore Verticale Timeline -->
+      <div class="relative mt-8">
+        <div class="timeline-stem"></div>
+        <div id="timeline-container" class="space-y-4">
+          <!-- Renderizzato dinamicamente da app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB: GLOSSARIO DEI PERSONAGGI (SUDDIVISI PER GIOCO) -->
+    <section id="tab-characters" class="hidden space-y-8">
+      <div class="border-b border-amber-500/20 pb-6 flex items-start gap-4">
+        <div class="w-14 h-14 rounded-2xl bg-amber-500/15 border border-amber-500/40 text-amber-300 flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(245,158,11,0.25)] shrink-0 mt-1">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-cinzel">Dramatis Personae dei Mondi</span>
+          <h2 class="text-3xl font-bold font-cinzel text-amber-100 mt-0.5">Glossario Completo dei Personaggi</h2>
+          <p class="text-sm text-slate-400 mt-1">
+            Tutti i protagonisti, custodi del Keyblade, membri dell'Organizzazione XIII, veggenti dell'antichità e alleati della saga, con artwork ufficiali, armi, doppiatori originali e legami del cuore suddivisi per gioco.
+          </p>
+        </div>
+      </div>
+
+      <!-- Barra di Ricerca & Filtri Giochi / Ruoli -->
+      <div class="space-y-4 bg-slate-950/60 p-4 sm:p-6 rounded-2xl border border-amber-500/20 shadow-xl">
+        
+        <!-- Input di Ricerca Personaggi -->
+        <div class="relative w-full">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-sm text-slate-400"></i>
+          <input 
+            type="text" 
+            id="char-search-input" 
+            placeholder="Cerca personaggio per nome, titolo, arma, doppiatore o parola chiave..." 
+            class="w-full bg-slate-900/90 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400 transition"
+          >
+        </div>
+
+        <!-- Sub-Tabs Orizzontali Giochi (Scrollabili) -->
+        <div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold mb-2 flex items-center gap-1.5">
+            <i class="fa-solid fa-gamepad text-indigo-400"></i> Filtra per Gioco Principale:
+          </div>
+          <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+            <button data-char-game="all" class="subtab-pill active px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-amber-500/30 bg-amber-500/10 text-amber-300">
+              Tutti i Giochi (44)
+            </button>
+            <button data-char-game="kh1" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              Kingdom Hearts I
+            </button>
+            <button data-char-game="com" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              Chain of Memories
+            </button>
+            <button data-char-game="kh2" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              Kingdom Hearts II
+            </button>
+            <button data-char-game="days" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              358/2 Days
+            </button>
+            <button data-char-game="bbs" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              Birth by Sleep
+            </button>
+            <button data-char-game="recoded" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              Re:coded
+            </button>
+            <button data-char-game="ddd" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              Dream Drop Distance
+            </button>
+            <button data-char-game="ux" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              χ / Union χ / Dark Road
+            </button>
+            <button data-char-game="kh3" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              Kingdom Hearts III & Re Mind
+            </button>
+            <button data-char-game="kh4" class="subtab-pill px-3.5 py-1.5 rounded-xl text-xs font-cinzel font-semibold shrink-0 border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-300 transition">
+              Quadratum & KH IV
+            </button>
+          </div>
+        </div>
+
+        <!-- Filtri Categoria / Ruolo -->
+        <div>
+          <div class="text-xs text-slate-400 uppercase tracking-wider font-semibold mb-2 flex items-center gap-1.5">
+            <i class="fa-solid fa-shield-heart text-amber-400"></i> Filtra per Ruolo o Fazione:
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <button data-char-cat="all" class="px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40 transition">
+              Tutti i Ruoli
+            </button>
+            <button data-char-cat="keyblade" class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300 transition">
+              Portatori del Keyblade
+            </button>
+            <button data-char-cat="guardians" class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300 transition">
+              Guardiani della Luce & Saggi
+            </button>
+            <button data-char-cat="darkness" class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300 transition">
+              Organizzazione XIII & Oscurità
+            </button>
+            <button data-char-cat="ancient" class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300 transition">
+              Veggenti, Dandelion & Quadratum
+            </button>
+            <button data-char-cat="disney" class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300 transition">
+              Reame Disney
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Griglia Schede Personaggi -->
+      <div id="characters-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 2: GUIDA AI GIOCHI -->
+    <section id="tab-games" class="hidden space-y-8">
+      <div class="border-b border-amber-500/20 pb-6">
+        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-cinzel">Grimorio del Giocatore</span>
+        <h2 class="text-3xl font-bold font-cinzel text-amber-100 mt-1">Guida Completa a Ciascun Gioco</h2>
+        <p class="text-sm text-slate-400 mt-1">
+          Dettagli sul combat system, versioni migliori su PC e console, consigli d'oro del veterano e i requisiti precisi per ogni difficoltà per sbloccare i leggendari filmati segreti.
+        </p>
+      </div>
+
+      <div id="games-container" class="grid grid-cols-1 gap-8">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 3: ORDINI DI GIOCO -->
+    <section id="tab-orders" class="hidden space-y-8">
+      <div class="border-b border-amber-500/20 pb-6">
+        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-cinzel">La Bussola di Yen Sid</span>
+        <h2 class="text-3xl font-bold font-cinzel text-amber-100 mt-1">Gli Ordini di Gioco Consigliati</h2>
+        <p class="text-sm text-slate-400 mt-1">
+          Il confronto definitivo tra Ordine di Uscita, Ordine Cronologico e l'Ordine Ottimizzato della Community, insieme alla guida alle collection HD.
+        </p>
+      </div>
+
+      <div id="orders-container">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 4: BOSS SEGRETI -->
+    <section id="tab-bosses" class="hidden space-y-8">
+      <div class="border-b border-amber-500/20 pb-6">
+        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-cinzel">Il Colosseo dei Campioni</span>
+        <h2 class="text-3xl font-bold font-cinzel text-amber-100 mt-1">I Boss Segreti Più Temuti della Saga</h2>
+        <p class="text-sm text-slate-400 mt-1">
+          Dalla leggendaria Volontà Residua in KH2FM a Yozora in KH3 Re Mind: schede tecniche, le mosse letali e sia le strategie oneste che i loop di sfruttamento (cheese).
+        </p>
+      </div>
+
+      <div id="bosses-container" class="grid grid-cols-1 gap-8">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 5: BESTIARIO DEI MONDI -->
+    <section id="tab-bestiary" class="hidden space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-amber-500/20 pb-5">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-cinzel">Il Grimorio delle Creature</span>
+          <h2 class="text-3xl md:text-4xl font-bold font-cinzel text-amber-100 mt-1">Bestiario dei Mondi</h2>
+          <p class="text-sm text-slate-400 mt-1">
+            Consulta le schede illustrate ufficiali di Heartless, Nessuno, Nesciens e Mangiasogni con descrizioni, locazioni sulla mappa e percentuali esatte di drop.
+          </p>
+        </div>
+        <div class="text-xs text-amber-300 bg-amber-500/10 px-3.5 py-2 rounded-xl border border-amber-500/30 shrink-0 font-medium">
+          <i class="fa-solid fa-book-skull mr-1.5 text-amber-400"></i> Schede Mostrate: <span id="bestiary-count-badge" class="font-bold text-amber-200">0</span>
+        </div>
+      </div>
+
+      <!-- Schede di Selezione Gioco (Sub-Tabs Orizzontali) -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-semibold">
+        <button data-bestiary-game="all" class="game-tab-btn active px-4 py-2.5 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-300 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-layer-group text-xs"></i> Tutte le Creature
+        </button>
+        <button data-bestiary-game="kh1-fm" class="game-tab-btn px-4 py-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-200 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-key text-xs text-amber-400"></i> Kingdom Hearts I FM
+        </button>
+        <button data-bestiary-game="kh2-fm" class="game-tab-btn px-4 py-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-200 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-chess-rook text-xs text-slate-300"></i> Kingdom Hearts II FM
+        </button>
+        <button data-bestiary-game="kh-bbs" class="game-tab-btn px-4 py-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-200 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-xs text-cyan-400"></i> Birth by Sleep
+        </button>
+        <button data-bestiary-game="kh-ddd" class="game-tab-btn px-4 py-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-200 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-feather-pointed text-xs text-pink-400"></i> Dream Drop Distance
+        </button>
+        <button data-bestiary-game="kh3" class="game-tab-btn px-4 py-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-200 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-crown text-xs text-yellow-400"></i> KH 0.2 & KH III
+        </button>
+      </div>
+
+      <!-- Barra Filtri Categoria e Ricerca -->
+      <div class="kh-card rounded-2xl p-4 border border-amber-500/25 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-300">Categoria:</span>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <button data-bestiary-cat="all" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40">Tutte</button>
+            <button data-bestiary-cat="Heartless Purosangue" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Purosangue</button>
+            <button data-bestiary-cat="Heartless Emblema" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Emblema</button>
+            <button data-bestiary-cat="Nessuno" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Nessuno</button>
+            <button data-bestiary-cat="Nescien" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Nesciens</button>
+            <button data-bestiary-cat="Mangiasogni" class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Mangiasogni</button>
+          </div>
+        </div>
+
+        <div class="relative w-full sm:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
+          <input type="text" id="bestiary-search-input" placeholder="Cerca mostro, mondo o materiale..." class="w-full bg-slate-900 border border-slate-700/80 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-400">
+        </div>
+      </div>
+
+      <!-- Griglia Card Mostri a Schede con Immagine Grande -->
+      <div id="bestiary-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== SEZIONE: FORGIA DEI KEYBLADE ==================== -->
+    <section id="tab-keyblades" class="hidden space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-amber-500/20 pb-6">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-cinzel">L'Arsenale Sacro dei Custodi</span>
+          <h2 class="text-3xl md:text-4xl font-bold font-cinzel text-amber-100 mt-1">La Forgia dei Keyblade</h2>
+          <p class="text-sm text-slate-400 mt-1 max-w-2xl">
+            Tutti i Keyblade leggendari con statistiche (Attacco, Magia, Raggio), abilità innate, trasformazioni Formchange e il metodo dettagliato per sbloccarli e sintetizzarli.
+          </p>
+        </div>
+        <div class="text-xs text-amber-300 bg-amber-500/10 px-3.5 py-2 rounded-xl border border-amber-500/30 shrink-0 font-medium">
+          <i class="fa-solid fa-key mr-1.5 text-amber-400"></i> Armi Disponibili: <span id="keyblades-count-badge" class="font-bold text-amber-200">0</span>
+        </div>
+      </div>
+
+      <!-- Filtri Gioco & Ricerca Keyblade -->
+      <div class="kh-card rounded-2xl p-4 border border-amber-500/25 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <button data-keyblade-filter="all" class="subtab-pill active px-3 py-1.5 rounded-xl text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/40">Tutti i Keyblade</button>
+          <button data-keyblade-filter="kh1" class="subtab-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Kingdom Hearts I</button>
+          <button data-keyblade-filter="kh2" class="subtab-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Kingdom Hearts II</button>
+          <button data-keyblade-filter="bbs" class="subtab-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Birth by Sleep</button>
+          <button data-keyblade-filter="kh3" class="subtab-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Kingdom Hearts III</button>
+          <button data-keyblade-filter="lore" class="subtab-pill px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-900 border border-slate-700 text-slate-300 hover:text-amber-300">Armi Ancestrali & Lore</button>
+        </div>
+
+        <div class="relative w-full sm:w-64">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-slate-400"></i>
+          <input type="text" id="keyblade-search-input" placeholder="Cerca Keyblade o abilità..." class="w-full bg-slate-900 border border-slate-700/80 rounded-xl pl-8 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-amber-400">
+        </div>
+      </div>
+
+      <!-- Griglia Schede Keyblade -->
+      <div id="keyblades-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== SEZIONE: ABILITÀ, MAGIE & CRESCITA ==================== -->
+    <section id="tab-skills" class="hidden space-y-8">
+      <div class="border-b border-amber-500/20 pb-6">
+        <span class="text-xs font-semibold uppercase tracking-wider text-sky-400 font-cinzel">Il Grimorio della Maestria</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-cinzel text-amber-100 mt-1">Tomo delle Abilità & Magie</h2>
+        <p class="text-sm text-slate-400 mt-1 max-w-2xl">
+          I segreti per sopravvivere a difficoltà Massima (Proud/Critical): le abilità salvavita, l'evoluzione delle abilità di crescita e la potenza degli incantesimi.
+        </p>
+      </div>
+
+      <!-- Sub-Tabs Abilità -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-semibold">
+        <button data-skill-tab="survival" class="subtab-pill active px-4 py-2.5 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-300 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-shield-heart text-xs text-rose-400"></i> 1. Sopravvivenza & Supporto Vitale
+        </button>
+        <button data-skill-tab="growth" class="subtab-pill px-4 py-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-200 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-person-running text-xs text-sky-400"></i> 2. Abilità di Crescita & Movimento (Lv.1 - MAX)
+        </button>
+        <button data-skill-tab="magic" class="subtab-pill px-4 py-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-200 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-wand-magic-sparkles text-xs text-amber-400"></i> 3. Sistema Magico & Incantesimi Avanzati
+        </button>
+      </div>
+
+      <!-- Contenitore Pannelli Abilità -->
+      <div id="skills-container" class="space-y-6">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== SEZIONE: FUSIONI & UNIONI ==================== -->
+    <section id="tab-unions" class="hidden space-y-8">
+      <div class="border-b border-amber-500/20 pb-6">
+        <span class="text-xs font-semibold uppercase tracking-wider text-rose-400 font-cinzel">Il Potere dei Legami Indissolubili</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-cinzel text-amber-100 mt-1">Forme di Fusione, D-Link & Unioni</h2>
+        <p class="text-sm text-slate-400 mt-1 max-w-2xl">
+          Tutto sulle celebri Forme Drive di Kingdom Hearts II (inclusa la formula segreta dell'Anti-Form), gli Stili di Comando di Birth by Sleep e gli attacchi combinati tra custodi.
+        </p>
+      </div>
+
+      <!-- Sub-Tabs Unioni -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-semibold">
+        <button data-union-tab="drive" class="subtab-pill active px-4 py-2.5 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-300 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-shirt text-xs text-amber-400"></i> 1. Forme di Fusione di KH2 (Drive Forms)
+        </button>
+        <button data-union-tab="bbs" class="subtab-pill px-4 py-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-200 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-bolt text-xs text-cyan-400"></i> 2. Stili di Comando & D-Link (BBS)
+        </button>
+        <button data-union-tab="team" class="subtab-pill px-4 py-2.5 rounded-xl border border-slate-700/80 bg-slate-900/60 text-slate-300 hover:text-amber-200 font-cinzel whitespace-nowrap flex items-center gap-2">
+          <i class="fa-solid fa-people-arrows text-xs text-pink-400"></i> 3. Unioni dei Custodi & Link (KH2/KH3)
+        </button>
+      </div>
+
+      <!-- Contenitore Pannelli Unioni -->
+      <div id="unions-container" class="space-y-6">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- ==================== SEZIONE: EPILOGHI & FILMATI SEGRETI ==================== -->
+    <section id="tab-epilogues" class="hidden space-y-8">
+      <div class="border-b border-amber-500/20 pb-6">
+        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-cinzel">I Misteri Oltre i Titoli di Coda</span>
+        <h2 class="text-3xl md:text-4xl font-bold font-cinzel text-amber-100 mt-1">L'Archivio degli Epiloghi & Scena Segreta</h2>
+        <p class="text-sm text-slate-400 mt-1 max-w-2xl">
+          L'analisi cinematografica e canonica di ogni singolo filmato segreto ed epilogo: la rivelazione di Luxu e la Scatola Nera, il duello con Yozora e il ponte verso Kingdom Hearts IV.
+        </p>
+      </div>
+
+      <div id="epilogues-container" class="space-y-8">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 6: ENCICLOPEDIA LORE -->
+    <section id="tab-lore" class="hidden space-y-8">
+      <div class="flex items-center gap-4 border-b border-amber-500/20 pb-6">
+        <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center text-2xl shadow-lg shadow-cyan-500/10 shrink-0">
+          <i class="fa-solid fa-book-journal-whills"></i>
+        </div>
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400 font-cinzel">I Tomi delle Profezie</span>
+          <h2 class="text-3xl font-bold font-cinzel text-amber-100 mt-0.5">Enciclopedia e Grandi Misteri</h2>
+          <p class="text-sm text-slate-400 mt-1">
+            Spiegazioni limpide e canoniche su Cuori, Regole dei Viaggi nel Tempo, la Scatola Nera, la Cerimonia di Successione del Keyblade e l'Altra Realtà di Quadratum.
+          </p>
+        </div>
+      </div>
+
+      <div id="lore-container" class="grid grid-cols-1 gap-8">
+        <!-- Renderizzato dinamicamente da app.js -->
+      </div>
+    </section>
+
+    <!-- TAB 6: TRACKER & SALOTTO -->
+    <section id="tab-tracker" class="hidden space-y-10">
+      <div class="border-b border-amber-500/20 pb-6">
+        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 font-cinzel">L'Albero del Paopu</span>
+        <h2 class="text-3xl font-bold font-cinzel text-amber-100 mt-1">Il Salotto del Custode & Tracker Personale</h2>
+        <p class="text-sm text-slate-400 mt-1">
+          Traccia i tuoi progressi, ricevi la benedizione del frutto a stella e scopri quale gioco di Kingdom Hearts è fatto apposta per te.
+        </p>
+      </div>
+
+      <!-- Dashboard Statistiche Tracker -->
+      <div class="kh-card rounded-2xl p-6 md:p-8 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Il Tuo Rango Attuale:</span>
+            <h3 id="tracker-rank-title" class="text-2xl font-bold font-cinzel text-amber-200 mt-0.5">Sognatore delle Isole</h3>
+          </div>
+          <span id="tracker-rank-badge" class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">
+            Apprendista
+          </span>
+        </div>
+
+        <!-- Barra di Avanzamento Globale -->
+        <div class="space-y-2">
+          <div class="flex justify-between text-xs text-slate-300 font-medium">
+            <span>Avanzamento Globale dell'Archivio</span>
+            <span id="tracker-progress-percent" class="text-amber-400 font-bold">0%</span>
+          </div>
+          <div class="w-full h-3 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+            <div id="tracker-progress-fill" class="h-full bg-gradient-to-r from-amber-500 via-rose-500 to-sky-400 transition-all duration-500 w-0"></div>
+          </div>
+        </div>
+
+        <!-- 3 Contatori -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <div class="text-xs text-slate-400 mb-1">Giochi Completati</div>
+            <div id="stat-games-count" class="text-2xl font-bold text-amber-100 font-cinzel">0 / 10</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <div class="text-xs text-slate-400 mb-1">Boss Segreti Battuti</div>
+            <div id="stat-bosses-count" class="text-2xl font-bold text-rose-300 font-cinzel">0 / 7</div>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+            <div class="text-xs text-slate-400 mb-1">Capitoli di Storia Letti</div>
+            <div id="stat-eras-count" class="text-2xl font-bold text-sky-300 font-cinzel">0 / 14</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Widget: Condividi un Frutto Paopu & Citazione Calda -->
+      <div class="kh-card rounded-2xl p-6 md:p-8 space-y-6 text-center relative overflow-hidden border-amber-500/30">
+        <div class="max-w-xl mx-auto space-y-4">
+          <div class="w-16 h-16 mx-auto rounded-full bg-amber-500/15 border border-amber-500/40 flex items-center justify-center text-amber-400 text-3xl shadow-lg shadow-amber-500/20">
+            <i class="fa-solid fa-star animate-pulse-glow"></i>
+          </div>
+          
+          <h3 class="text-2xl font-bold font-cinzel text-amber-100">
+            Il Rituale del Frutto Paopu
+          </h3>
+          <p class="text-xs md:text-sm text-slate-300">
+            «Se due persone condividono un frutto Paopu, i loro destini si intrecciano per sempre.» Clicca la stella per ricevere un pensiero caloroso e una citazione memorabile dal cuore dei mondi.
+          </p>
+
+          <div class="p-5 rounded-2xl bg-slate-900/70 border border-amber-500/20 space-y-3 min-h-[120px] flex flex-col justify-center">
+            <p id="paopu-quote-text" class="text-base md:text-lg italic text-amber-200 font-cinzel leading-relaxed">
+              «Anche se saremo lontani, un giorno ci ritroveremo. Io tornerò da te, te lo prometto!»
+            </p>
+            <p id="paopu-speaker-text" class="text-xs text-amber-400 font-medium">
+              — Sora e Kairi (Kingdom Hearts I)
+            </p>
+            <p id="paopu-blessing-text" class="text-[11px] text-slate-400 pt-1 border-t border-slate-800">
+              Che il tuo cammino sia illuminato dalla luce dei legami sinceri.
+            </p>
+          </div>
+
+          <button id="paopu-wish-btn" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-400 hover:to-rose-400 text-slate-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/25 transition">
+            <i class="fa-solid fa-wand-magic-sparkles mr-1.5"></i> Chiedi una Nuova Benedizione
+          </button>
+        </div>
+      </div>
+
+      <!-- Quiz: "Da quale gioco dovrei iniziare?" -->
+      <div class="kh-card rounded-2xl p-6 md:p-8 space-y-4">
+        <div class="border-b border-slate-800 pb-3">
+          <span class="text-xs uppercase font-bold text-amber-400 tracking-wider">Test Interattivo per Nuovi e Vecchi Custodi</span>
+          <h3 class="text-xl font-bold font-cinzel text-amber-100 mt-1">Quale Gioco di Kingdom Hearts Fa per Te Oggi?</h3>
+        </div>
+        <div id="kh-starter-quiz" class="py-2">
+          <!-- Renderizzato dinamicamente da app.js -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODALE DETTAGLIO ERA NARRATIVA ==================== -->
+  <div id="era-detail-modal" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4 sm:p-6 md:p-10">
+    <div class="bg-slate-950 border border-amber-500/40 rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl shadow-black overflow-hidden relative">
+      
+      <!-- Top Bar Chiudi Modale -->
+      <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60 shrink-0">
+        <span class="text-xs uppercase font-cinzel tracking-wider text-amber-400">
+          <i class="fa-solid fa-scroll mr-1.5"></i> Tomo delle Cronache
+        </span>
+        <button id="close-era-modal" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-rose-500/30 text-slate-300 hover:text-rose-300 flex items-center justify-center transition" aria-label="Chiudi Finestra">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Contenuto Scorrevole -->
+      <div id="era-modal-content" class="p-6 md:p-8 overflow-y-auto space-y-6">
+        <!-- Riempito dinamicamente da openEraModal -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODALE SCHEDA COMPLETA MOSTRO ==================== -->
+  <div id="monster-detail-modal" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4 sm:p-6 md:p-10">
+    <div class="bg-slate-950 border border-amber-500/40 rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl shadow-black overflow-hidden relative">
+      
+      <!-- Top Bar Chiudi Modale -->
+      <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60 shrink-0">
+        <span class="text-xs uppercase font-cinzel tracking-wider text-amber-400">
+          <i class="fa-solid fa-book-skull mr-1.5"></i> Scheda del Diario del Grillo Parlante
+        </span>
+        <button id="close-monster-modal" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-rose-500/30 text-slate-300 hover:text-rose-300 flex items-center justify-center transition" aria-label="Chiudi Finestra">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Contenuto Scorrevole -->
+      <div id="monster-modal-content" class="p-6 md:p-8 overflow-y-auto space-y-6">
+        <!-- Riempito dinamicamente da openMonsterModal -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODALE SCHEDA COMPLETA PERSONAGGIO ==================== -->
+  <div id="character-detail-modal" class="fixed inset-0 z-50 modal-overlay hidden flex items-center justify-center p-4 sm:p-6 md:p-10">
+    <div class="bg-slate-950 border border-amber-500/40 rounded-3xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl shadow-black overflow-hidden relative">
+      
+      <!-- Top Bar Chiudi Modale -->
+      <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/60 shrink-0">
+        <span class="text-xs uppercase font-cinzel tracking-wider text-amber-400">
+          <i class="fa-solid fa-id-badge mr-1.5"></i> Dossier Ufficiale del Personaggio
+        </span>
+        <button id="close-character-modal" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-rose-500/30 text-slate-300 hover:text-rose-300 flex items-center justify-center transition" aria-label="Chiudi Finestra">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Contenuto Scorrevole -->
+      <div id="character-modal-content" class="p-6 md:p-8 overflow-y-auto space-y-6">
+        <!-- Riempito dinamicamente da openCharacterModal -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-slate-950 border-t border-slate-900 py-10 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 text-center">
+      <div class="flex justify-center items-center gap-2 text-amber-400 text-sm">
+        <i class="fa-solid fa-crown"></i>
+        <span class="font-cinzel font-bold text-amber-200">May your heart be your guiding key</span>
+        <i class="fa-solid fa-heart text-rose-500 text-xs"></i>
+      </div>
+      <p class="max-w-2xl mx-auto leading-relaxed">
+        Creato con amore e dedizione per tutti i custodi del Keyblade nel mondo. Un caloroso ringraziamento a <strong class="text-slate-300">Tetsuya Nomura</strong> e al genio compositivo di <strong class="text-slate-300">Yoko Shimomura</strong>.
+      </p>
+      <p class="text-[11px] text-slate-600">
+        Kingdom Hearts è un marchio registrato di Disney e Square Enix Holdings Co., Ltd. Questo portale è un'opera no-profit ad uso divulgativo e comunitario.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==================== MODULI JAVASCRIPT ==================== -->
+  <script src="js/data/timeline-data.js"></script>
+  <script src="js/data/characters-data.js"></script>
+  <script src="js/data/games-data.js"></script>
+  <script src="js/data/bosses-data.js"></script>
+  <script src="js/data/bestiary-data.js"></script>
+  <script src="js/data/keyblades-data.js"></script>
+  <script src="js/data/skills-data.js"></script>
+  <script src="js/data/unions-data.js"></script>
+  <script src="js/data/epilogues-data.js"></script>
+  <script src="js/data/lore-data.js"></script>
+  <script src="js/data/orders-data.js"></script>
+  <script src="js/data/quotes-data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
