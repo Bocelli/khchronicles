@@ -19,7 +19,7 @@ window.KH_ORDERS_DATA = {
           "Kingdom Hearts 358/2 Days (Filmato cinematografico HD di 3 ore)",
           "Kingdom Hearts Re:coded (Filmato cinematografico HD di 3 ore)"
         ],
-        platforms: "PlayStation 4 / 5, Xbox One / Series, PC (Steam & Epic Games Store), Nintendo Switch (Cloud)"
+        platforms: "PlayStation 4 / 5, Xbox One / Series, PC (Steam & Epic Games Store), Nintendo Switch 1 & 2 (Versione Nativa, non Cloud!)"
       },
       {
         name: "Kingdom Hearts HD 2.8 Final Chapter Prologue",
@@ -29,7 +29,7 @@ window.KH_ORDERS_DATA = {
           "Kingdom Hearts 0.2 Birth by Sleep - A Fragmentary Passage (Giocabile in Unreal Engine)",
           "Kingdom Hearts χ Back Cover (Film d'animazione cinematografico in Unreal Engine)"
         ],
-        platforms: "PlayStation 4 / 5, Xbox One / Series, PC (Steam & Epic Games Store), Nintendo Switch (Cloud)"
+        platforms: "PlayStation 4 / 5, Xbox One / Series, PC (Steam & Epic Games Store), Nintendo Switch 1 & 2 (Versione Nativa, non Cloud!)"
       },
       {
         name: "Kingdom Hearts III + DLC Re Mind",
@@ -38,7 +38,7 @@ window.KH_ORDERS_DATA = {
           "Kingdom Hearts III (Gioco Completo)",
           "DLC Re Mind (Capitolo di trama aggiuntivo, 13 Boss Dati e il leggendario scontro con Yozora)"
         ],
-        platforms: "PlayStation 4 / 5, Xbox One / Series, PC (Steam & Epic Games Store), Nintendo Switch (Cloud)"
+        platforms: "PlayStation 4 / 5, Xbox One / Series, PC (Steam & Epic Games Store), Nintendo Switch 2 (Nativa) | Switch 1 (Solo Cloud)"
       },
       {
         name: "Kingdom Hearts: Melody of Memory",
@@ -46,10 +46,41 @@ window.KH_ORDERS_DATA = {
         contents: [
           "Rhythm Game con oltre 140 canzoni e le cutscene finali che introducono Quadratum e il viaggio di Riku"
         ],
-        platforms: "PlayStation 4 / 5, Xbox One / Series, Nintendo Switch (Nativa, NON cloud!), PC"
+        platforms: "PlayStation 4 / 5, Xbox One / Series, Nintendo Switch 1 & 2 (Nativa ovunque), PC"
       }
     ],
-    switchCloudWarning: "ATTENZIONE SU NINTENDO SWITCH: I capitoli principali su Switch girano esclusivamente tramite versione CLOUD (streaming internet). Se la tua connessione non è stabilissima a bassissima latenza, potresti riscontrare cali di frame, input lag e disconnessioni nei combattimenti concitati. Consigliamo caldamente di giocare su PC (Steam), PlayStation o Xbox per avere i 60fps nativi fluidi."
+    switchCloudWarning: `
+      <div class="space-y-2">
+        <div class="font-bold text-amber-300 font-cinzel text-sm sm:text-base flex items-center gap-2">
+          <i class="fa-brands fa-nintendo-switch text-rose-400 text-lg"></i>
+          <span>AGGIORNAMENTO NINTENDO SWITCH & SWITCH 2 (VERSIONI NATIVE VS CLOUD)</span>
+        </div>
+        <p class="text-slate-200 text-xs sm:text-sm">
+          Inizialmente l'intera saga su Nintendo Switch era vincolata alle famigerate <em>Cloud Version</em> via streaming internet, soggette a input lag e disconnessioni. Ora il quadro è finalmente cambiato:
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-1">
+          <div class="bg-slate-900/80 p-3 rounded-lg border border-emerald-500/30">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 uppercase mb-1">
+              ✨ Nintendo Switch 2
+            </span>
+            <p class="text-xs text-slate-200">
+              <strong>TUTTI i giochi sono usciti in versione NATIVA (NON in Cloud)</strong>. L'intera saga, compreso <em>Kingdom Hearts III + Re Mind</em>, gira direttamente sull'hardware in locale senza bisogno di streaming continuo.
+            </p>
+          </div>
+          <div class="bg-slate-900/80 p-3 rounded-lg border border-amber-500/30">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 uppercase mb-1">
+              🎮 Nintendo Switch 1
+            </span>
+            <p class="text-xs text-slate-200">
+              <strong>Sono arrivati tutti nativi tranne KH3</strong>: <em>HD 1.5 + 2.5 ReMIX</em>, <em>HD 2.8</em> e <em>Melody of Memory</em> girano nativamente in locale. L'unico a restare in Cloud su Switch 1 è <em>Kingdom Hearts III</em> per via del motore grafico avanzato.
+            </p>
+          </div>
+        </div>
+        <p class="text-slate-400 text-[11px] pt-1 italic">
+          💡 <strong>Consiglio pratico</strong>: Se possiedi Switch 1 puoi goderti l'intera saga classica in locale ovunque; per Kingdom Hearts III ti consigliamo di giocarlo su Switch 2, PlayStation, Xbox o PC (Steam) per evitare i limiti dello streaming.
+        </p>
+      </div>
+    `
   },
 
   orders: [

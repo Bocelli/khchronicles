@@ -1196,9 +1196,11 @@ document.addEventListener("DOMContentLoaded", () => {
           `).join("")}
         </div>
 
-        <div class="p-4 rounded-xl bg-rose-950/20 border border-rose-500/30 text-rose-200 text-xs md:text-sm flex items-start gap-3">
-          <i class="fa-solid fa-triangle-exclamation text-rose-400 text-base mt-0.5 shrink-0"></i>
-          <div>${data.compilationGuide.switchCloudWarning}</div>
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-amber-500/35 text-slate-200 text-xs md:text-sm flex items-start gap-3.5 shadow-xl shadow-black/40">
+          <div class="w-9 h-9 rounded-xl bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+            <i class="fa-solid fa-circle-info text-base"></i>
+          </div>
+          <div class="flex-1">${data.compilationGuide.switchCloudWarning}</div>
         </div>
       </div>
 
