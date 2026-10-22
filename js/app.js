@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 1. Gestione Navigazione a Schede
   function updateNavButtons() {
-    const navButtons = document.querySelectorAll("[data-nav-tab]");
+    const navButtons = document.querySelectorAll("#left-dock-nav .dock-item[data-nav-tab]");
     navButtons.forEach(b => {
       const tab = b.getAttribute("data-nav-tab");
       if (tab === state.currentTab) {
@@ -99,13 +99,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function initNavigation() {
-    const navButtons = document.querySelectorAll("[data-nav-tab]");
+    const navButtons = document.querySelectorAll("#left-dock-nav .dock-item[data-nav-tab]");
+    const headerLogoBtn = document.getElementById("header-logo-btn");
     const mobileSelect = document.getElementById("mobile-nav-select");
     const dockNav = document.getElementById("left-dock-nav") || document.getElementById("right-dock-nav");
     const dockToggleBtn = document.getElementById("dock-toggle-btn");
     const dockPancakeIcon = document.getElementById("dock-pancake-icon");
     const mobilePancakeBtn = document.getElementById("mobile-pancake-btn");
     const dockBackdrop = document.getElementById("dock-backdrop");
+
+    // Click sul Logo Header: torna alla Home pulita senza bordi o sfondi attivi
+    if (headerLogoBtn) {
+      headerLogoBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        state.currentTab = "home";
+        if (dockNav) {
+          dockNav.classList.remove("mobile-open");
+          dockNav.classList.remove("expanded");
+          if (dockPancakeIcon) dockPancakeIcon.className = "fa-solid fa-bars text-xs";
+        }
+        if (dockBackdrop) dockBackdrop.classList.add("hidden");
+        window.khAudio.playUiSound("click");
+        renderCurrentTab();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
 
     // Toggle Espansione Dock Sinistro Desktop
     if (dockToggleBtn && dockNav) {

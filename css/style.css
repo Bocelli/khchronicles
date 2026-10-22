@@ -384,6 +384,39 @@ body {
   box-shadow: 12px 0 35px rgba(0, 0, 0, 0.85), 0 0 20px rgba(245, 158, 11, 0.15);
 }
 
+/* Intestazione Dock e Allineamento Perfetto del Tasto Espandi / Riduci */
+#left-dock-nav .dock-header {
+  height: 3rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: padding 0.2s ease, justify-content 0.2s ease;
+}
+
+#left-dock-nav:not(.expanded):not(.mobile-open) .dock-header {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+
+#left-dock-nav:not(.expanded):not(.mobile-open) #dock-toggle-btn {
+  margin: 0 auto !important;
+}
+
+#left-dock-nav.expanded .dock-header,
+#left-dock-nav.mobile-open .dock-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 0.75rem !important;
+}
+
+#left-dock-nav.expanded #dock-toggle-btn,
+#left-dock-nav.mobile-open #dock-toggle-btn {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
 #left-dock-nav.expanded .dock-label, #right-dock-nav.expanded .dock-label {
   display: block !important;
   animation: monsterPaneFade 0.2s cubic-bezier(0.16, 1, 0.3, 1);
