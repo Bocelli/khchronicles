@@ -1,6 +1,9 @@
 # Dipendenze
 node_modules/
 
+# Script locali di generazione e download
+scripts/
+
 # File di sistema e log
 .DS_Store
 Thumbs.db
